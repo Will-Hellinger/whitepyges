@@ -96,6 +96,7 @@ class Phone:
             "state": phone_info_list[1],
             "cities": phone_info_list[2],
             "area_code": phone_info_list[3],
+            "url": url,
         }
 
         return formatted_phone_info

@@ -85,28 +85,13 @@ class Person:
                 ):
                     continue
 
-            cleaned_items.append(item)
+            item_data.pop("@type", None)
+
+            item_data["url"] = config.BASE_URL + item_data.get("url", "")
+
+            cleaned_items.append(item_data)
 
         return cleaned_items
-
-    def _reposition_element_list(self, element_list: list[dict]) -> list[dict]:
-        """
-        Reposition the elements in the list
-
-        Args:
-            element_list (list[dict]): The list of elements to reposition
-
-        Returns:
-            list[dict]: The repositioned list of elements
-        """
-
-        for i in range(0, len(element_list)):
-            original_position: int = element_list[i].pop("position", 0)
-
-            element_list[i]["currentPosition"] = i + 1
-            element_list[i]["originalPosition"] = original_position
-
-        return element_list
 
     def search(
         self,
@@ -162,9 +147,12 @@ class Person:
         person_data: dict = json.loads(script_tag.string)[0]
 
         cleaned_items: list[dict] = self._clean_person_data(person_data, self.age)
-        cleaned_items = self._reposition_element_list(cleaned_items)
 
-        return cleaned_items[:count] if count != -1 else cleaned_items
+        return (
+            cleaned_items[:count]
+            if count != -1 and count <= len(cleaned_items)
+            else cleaned_items
+        )
 
     def __repr__(self) -> str:
         """
