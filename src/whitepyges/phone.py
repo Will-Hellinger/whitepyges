@@ -93,9 +93,9 @@ class Phone:
 
         formatted_phone_info: dict = {
             "spam_info": spam_info,
-            "state": phone_info_list[1],
-            "cities": phone_info_list[2],
-            "area_code": phone_info_list[3],
+            "state": phone_info_list[2],
+            "cities": phone_info_list[3],
+            "area_code": phone_info_list[1],
             "url": url,
         }
 
