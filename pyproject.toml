@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "whitepyges"
-version = "0.1a"
+version = "0.2a"
 description = "Unofficial Python client for Whitepages"
 authors = [{ name = "Will Hellinger", email = "111201130+Will-Hellinger@users.noreply.github.com" }]
 license = { text = "MIT" }
