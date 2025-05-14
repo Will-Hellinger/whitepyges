@@ -38,6 +38,12 @@ jobs:
       - name: Copy coverage report into site
         run: |
           cp -r htmlcov ./site/htmlcov
+      
+      - name: List files after tests
+        run: ls -l
+
+      - name: List files after MkDocs build
+        run: ls -l site
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
