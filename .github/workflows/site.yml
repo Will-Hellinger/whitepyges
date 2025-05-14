@@ -27,6 +27,10 @@ jobs:
       - name: Run tests and generate coverage report
         run: |
           pytest
+      
+      - name: Ensure coverage report exists
+        run: |
+          test -d htmlcov || (echo "Coverage report not found!" && exit 1)
 
       - name: Build MkDocs site
         run: mkdocs build
