@@ -36,6 +36,12 @@ use_directory_urls: false
 
 nav:
   - Home: index.md
+  - Guides:
+      - Usage: guides/usage.md
+  - API Reference:
+      - Address: api/address.md
+      - Person: api/person.md
+      - Phone: api/phone.md
   - Coverage:
       - Coverage Report: coverage.md
 
@@ -47,6 +53,7 @@ plugins:
       default_handler: python
       handlers:
         python:
+          paths: ["src"]
           options:
             heading_level: 3
             show_source: true
@@ -54,6 +61,8 @@ plugins:
             show_root_heading: false
             show_root_full_path: false
             show_signature: false
+            filters:
+              - ".*"
   - minify:
       minify_html: true
       minify_css: true

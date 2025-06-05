@@ -4,17 +4,11 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "whitepyges"
-version = "0.2a"
+version = "0.3a"
 description = "Unofficial Python client for Whitepages"
 authors = [{ name = "Will Hellinger", email = "111201130+Will-Hellinger@users.noreply.github.com" }]
 license = { text = "MIT" }
-dependencies = [
-    "beautifulsoup4==4.13.3",
-    "cloudscraper==1.2.71",
-    "requests==2.32.3"
-]
 requires-python = ">=3.9"
-
 [project.optional-dependencies]
 dev = [
     "pytest",
@@ -42,7 +36,7 @@ whitepyges = ["py.typed"]
 
 [tool.black]
 line-length = 88
-target-version = ['py38', 'py39', 'py310', 'py311', 'py312', 'py313']
+target-version = ['py39', 'py310', 'py311', 'py312', 'py313']
 
 [tool.isort]
 profile = "black"
