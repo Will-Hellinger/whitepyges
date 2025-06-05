@@ -9,6 +9,11 @@ description = "Unofficial Python client for Whitepages"
 authors = [{ name = "Will Hellinger", email = "111201130+Will-Hellinger@users.noreply.github.com" }]
 license = { text = "MIT" }
 requires-python = ">=3.9"
+dependencies = [
+    "beautifulsoup4==4.13.3",
+    "cloudscraper==1.2.71",
+    "requests==2.32.3"
+]
 [project.optional-dependencies]
 dev = [
     "pytest",
