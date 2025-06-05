@@ -1,0 +1,38 @@
+[
+    {
+        "name": "Jon Doe",
+        "givenName": "Jon",
+        "familyName": "Doe",
+        "description": "Jon Doe in their 70s, currently living in Example, WA",
+        "url": "https://www.whitepages.com/name/Jon-Doe/Example-WA/random_letters",
+        "address": [
+            {
+                "@type": "PostalAddress",
+                "streetAddress": "123 St",
+                "addressLocality": "Example",
+                "addressRegion": "WA",
+                "addressCountry": "US"
+            }
+        ],
+        "telephone": "(123) 456-7890",
+        "relatedTo": []
+    },
+    {
+        "name": "Jon Doe",
+        "givenName": "Jon",
+        "familyName": "Doe",
+        "description": "Jon Doe in their 40s, currently living in Example-2, WA",
+        "url": "https://www.whitepages.com/name/Jon-Doe/Example-2-WA/random_letters2",
+        "address": [
+            {
+                "@type": "PostalAddress",
+                "streetAddress": "123 Ave",
+                "addressLocality": "Example-2",
+                "addressRegion": "WA",
+                "addressCountry": "US"
+            }
+        ],
+        "telephone": "(123) 456-7890",
+        "relatedTo": []
+    }
+]

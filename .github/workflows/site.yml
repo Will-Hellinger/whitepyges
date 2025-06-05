@@ -1,0 +1,54 @@
+name: Build and Deploy Docs
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  test-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13.3'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install .[docs,dev]
+
+      - name: Run tests and generate coverage report
+        run: |
+          pytest
+      
+      - name: Ensure coverage report exists
+        run: |
+          test -d htmlcov || (echo "Coverage report not found!" && exit 1)
+
+      - name: Build MkDocs site
+        run: mkdocs build
+      
+      - name: Copy coverage report into site
+        run: |
+          cp -r htmlcov ./site/htmlcov
+      
+      - name: List files after tests
+        run: ls -l
+
+      - name: List files after MkDocs build
+        run: ls -l site
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./site
+          force_orphan: true

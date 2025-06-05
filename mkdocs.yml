@@ -1,0 +1,83 @@
+site_name: "Whitepyges Developer Docs"
+site_description: "Documentation for Whitepyges."
+theme:
+  name: material
+  palette:
+    - scheme: default
+      primary: light green
+      accent: light green
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      primary: light green
+      accent: light green
+      toggle:
+        icon: material/brightness-2
+        name: Switch to light mode
+  features:
+    - navigation.tabs
+    - navigation.top
+    - navigation.expand
+    - navigation.instant
+    - navigation.sections
+    - navigation.tracking
+    - navigation.search.highlight
+    - navigation.search.shareable
+    - navigation.search.suggest
+    - navigation.search.suggest.indexes
+    - navigation.search.suggest.terms
+    - navigation.search.suggest.results
+    - navigation.search.suggest.results.indexes
+  logo: images/logo.png
+  favicon: images/logo.png
+
+use_directory_urls: false
+
+nav:
+  - Home: index.md
+  - Guides:
+      - Usage: guides/usage.md
+  - API Reference:
+      - Address: api/address.md
+      - Person: api/person.md
+      - Phone: api/phone.md
+  - Coverage:
+      - Coverage Report: coverage.md
+
+docs_dir: docs
+
+plugins: 
+  - search
+  - mkdocstrings:
+      default_handler: python
+      handlers:
+        python:
+          paths: ["src"]
+          options:
+            heading_level: 3
+            show_source: true
+            docstring_style: google
+            show_root_heading: false
+            show_root_full_path: false
+            show_signature: false
+            filters:
+              - ".*"
+  - minify:
+      minify_html: true
+      minify_css: true
+      minify_js: true
+  - git-revision-date-localized:
+      fallback_to_build_date: true
+  - coverage:
+      html_report_dir: htmlcov
+
+markdown_extensions:
+  - pymdownx.snippets
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format

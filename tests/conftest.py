@@ -1,7 +1,7 @@
 import pytest
 import coverage
 
-cov: coverage.Coverage = coverage.Coverage(source=["whitepyges"])
+cov: coverage.Coverage = coverage.Coverage(source=["whitepyges"], omit=["__init__.py", "*/tests/*"])
 
 
 def pytest_sessionstart(session) -> None:

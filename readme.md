@@ -1,5 +1,10 @@
 # Whitepyges
 
+![image](./docs/images/logo.png)
+
+[![Art by @stawbeby](https://img.shields.io/badge/Art%20by-%40stawbeby-green?style=for-the-badge&logo=instagram)](https://www.instagram.com/stawbeby/profilecard)
+
+
 Whitepyges is an unoficial Python client library for retrieving public information from Whitepages.com
 
 ## ⚠️ Legal Disclaimer ⚠️
