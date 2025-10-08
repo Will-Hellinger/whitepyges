@@ -25,6 +25,10 @@ This software is provided for personal and educational use only. You are respons
 
 To install Whitepyges, use pip:
 
+```bash
+pip install whitepyges
+```
+
 locally:
 ```bash
 git clone https://github.com/will-hellinger/whitepyges.git

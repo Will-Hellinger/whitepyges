@@ -52,6 +52,8 @@ class Phone:
 
         url: str = helper.get_endpoint("phone", endpoint, number=self.phone_number)
 
+        print(url)
+
         headers: dict = self.headers
         if randomize_headers:
             headers = helper.get_random_headers()
@@ -71,31 +73,38 @@ class Phone:
             return None
 
         splitting_info: tuple[str] = (
-            "Area Code & Provider Details",
+            "their location and provider",
             "Area code location",
             "Other major (",
             ") cities",
         )
 
         phone_info: str = phone_info_div.get_text(strip=True)
-        phone_info_list: list[str] = []
 
         for info in splitting_info:
             if info in phone_info:
-                split_info: list[str] = phone_info.split(info, maxsplit=1)
+                phone_info = phone_info.replace(info, f"|{info}|")
 
-                phone_info_list.append(split_info[0])
-                phone_info = split_info[1]
+        phone_info_list: list[str] = phone_info.split("|")
 
         spam_info: str = "No spam info available"
         if spam_info_div:
             spam_info = spam_info_div.get_text(strip=True)
 
+        state: str = "Unknown"
+        cities: str = "Unkown"
+
+        if "their location and provider" in phone_info_list:
+            state = phone_info_list[phone_info_list.index("their location and provider") + 1]
+        
+        if "Area code location" in phone_info_list:
+            cities = phone_info_list[phone_info_list.index("Area code location") + 1]
+
         formatted_phone_info: dict = {
             "spam_info": spam_info,
-            "state": phone_info_list[2],
-            "cities": phone_info_list[3],
-            "area_code": phone_info_list[1],
+            "state": state,
+            "cities": cities,
+            "area_code": self.phone_number[2:5] if self.phone_number else "Unknown",
             "url": url,
         }
 

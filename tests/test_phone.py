@@ -23,7 +23,7 @@ def test_phone_search(mock_get_endpoint, mock_make_request):
     mock_response.text = """
     <html>
         <div data-qa-selector="phone-header-area-code-info">
-            Area Code & Provider DetailsArea code locationCaliforniaOther major (Los Angeles) cities
+            About their location and providerTexasArea code locationAustin,Round Rock,San Marcos,Georgetown,Cedar ParkOther major (512) citiesT-Mobile USA, Inc.Phone carrier informationMore on their Area CodeT-Mobile USA, Inc. is the primary carrier for +1 (512) 591-7315.
         </div>
         <a class="wp-chip">Spam info available</a>
     </html>
@@ -34,9 +34,9 @@ def test_phone_search(mock_get_endpoint, mock_make_request):
     result = phone.search()
 
     assert result["spam_info"] == "Spam info available"
-    assert result["state"] == "California"
-    assert result["cities"] == "Los Angeles"
-    assert result["area_code"] == ""
+    assert result["state"] == "Texas"
+    assert result["cities"] == "Austin,Round Rock,San Marcos,Georgetown,Cedar Park"
+    assert result["area_code"] == "123"
     assert result["url"] == "mock_url"
 
 
